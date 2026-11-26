@@ -1,6 +1,6 @@
 
 import sys
-
+from src.browser import WebsiteWindow
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QMessageBox
 
@@ -14,7 +14,7 @@ class MacAddressApp(QWidget):
         super().__init__()
 
         self.mac_address = None
-
+        self.browser_window = None
         self.setWindowTitle("3D Bharat - MAC Address Fetcher")
         self.setFixedSize(500, 400)
 
@@ -127,8 +127,8 @@ class MacAddressApp(QWidget):
             self.fetch_button.setEnabled(True)
             self.fetch_button.setText("Fetch MAC Address")
 
+    
     def launch_website(self):
-
         if not self.mac_address:
             QMessageBox.warning(
                 self,
@@ -137,12 +137,16 @@ class MacAddressApp(QWidget):
             )
             return
 
-        QMessageBox.information(
-            self,
-            "Website Integration",
-            "MAC Address fetched successfully.\n"
-            "Website integration will be implemented in Part 4."
-        )
+        try:
+            self.browser_window = WebsiteWindow( self.mac_address )
+            self.browser_window.show()
+
+        except Exception as error:
+            QMessageBox.critical(
+                self,
+                "Browser Error",
+                f"Unable to launch website: {error}"
+            )
 
 
 if __name__ == "__main__":
