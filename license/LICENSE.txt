@@ -1,0 +1,31 @@
+
+3D BHARAT MAC ADDRESS FETCHER
+Assignment License and Usage Notice
+
+Application:
+3D Bharat MAC Address Fetcher
+
+Company:
+Micro Integrated Semiconductor Systems Pvt. Ltd.
+
+Version:
+1.0.0
+
+Purpose:
+This application was developed as part of a Python Developer
+technical assignment.
+
+Usage:
+This software is provided for evaluation and demonstration
+as part of the technical assignment.
+
+Ownership:
+The inclusion of the company name does not imply that the
+company has granted any commercial license, intellectual
+property rights, or authorization beyond the assignment
+requirements.
+
+Third-Party Components:
+This application uses Python and PySide6.
+Third-party components remain subject to their respective
+licenses.

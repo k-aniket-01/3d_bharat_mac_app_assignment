@@ -1,0 +1,18 @@
+
+{
+    "application": {
+        "name": "3D Bharat MAC Address Fetcher",
+        "version": "1.0.0",
+        "company": "Micro Integrated Semiconductor Systems Pvt. Ltd."
+    },
+    "website": {
+        "url": "https://www.3dbharat.com/"
+    },
+    "cookie": {
+        "name": "mac_address",
+        "domain": ".3dbharat.com",
+        "path": "/",
+        "secure": true,
+        "http_only": false
+    }
+}
