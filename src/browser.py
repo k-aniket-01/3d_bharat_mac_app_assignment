@@ -2,7 +2,7 @@
 from PySide6.QtCore import QUrl, QTimer
 from PySide6.QtNetwork import QNetworkCookie
 from PySide6.QtWidgets import QMainWindow, QMessageBox
-
+from src.config import CONFIG
 from PySide6.QtWebEngineCore import (
     QWebEngineProfile,
     QWebEnginePage
@@ -11,9 +11,14 @@ from PySide6.QtWebEngineCore import (
 from PySide6.QtWebEngineWidgets import QWebEngineView
 
 
-WEBSITE_URL = "https://www.3dbharat.com/"
-COOKIE_NAME = b"mac_address"
-COOKIE_DOMAIN = ".3dbharat.com"
+WEBSITE_URL = CONFIG["website"]["url"]
+
+COOKIE_NAME = CONFIG["cookie"]["name"].encode("utf-8")
+COOKIE_DOMAIN = CONFIG["cookie"]["domain"]
+COOKIE_PATH = CONFIG["cookie"]["path"]
+
+COOKIE_SECURE = CONFIG["cookie"]["secure"]
+COOKIE_HTTP_ONLY = CONFIG["cookie"]["http_only"]
 
 
 class WebsiteWindow(QMainWindow):
@@ -73,16 +78,13 @@ class WebsiteWindow(QMainWindow):
         )
 
         cookie.setDomain(COOKIE_DOMAIN)
-        cookie.setPath("/")
-        cookie.setSecure(True)
-        cookie.setHttpOnly(False)
+        cookie.setPath(COOKIE_PATH)
+        cookie.setSecure(COOKIE_SECURE)
+        cookie.setHttpOnly(COOKIE_HTTP_ONLY)
 
         origin = QUrl(WEBSITE_URL)
 
-        self.cookie_store.setCookie(
-            cookie,
-            origin
-        )
+        self.cookie_store.setCookie(cookie, origin)
 
     def on_cookie_added(self, cookie):
 
